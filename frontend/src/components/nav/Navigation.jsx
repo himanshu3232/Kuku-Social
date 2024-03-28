@@ -1,7 +1,10 @@
 import React from "react";
 import { navMenu } from "./navMenu";
-
+import { useNavigate } from "react-router-dom";
+import { Avatar, Button } from "@mui/material";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 export default function Navigation() {
+  const navigate = useNavigate();
   return (
     <div className="h-screen sticky top-0">
       <div>
@@ -18,11 +21,42 @@ export default function Navigation() {
             <div
               key={index}
               className="cursor-pointer flex space-x-3 items-center"
+              onClick={() =>
+                item.title === "Profile"
+                  ? navigate(`/profile/${5}`)
+                  : navigate(item.path)
+              }
             >
               {item.icon && <item.icon className="icon-class" />}
               <p className="text-xl">{item.title}</p>
             </div>
           ))}
+        </div>
+        <div className="py-10">
+          <Button
+            sx={{
+              width: "100%",
+              borderRadius: "29px",
+              py: "15px",
+              bgColor: "#1e88e5",
+            }}
+            variant="contained"
+          >
+            Post
+          </Button>
+        </div>
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <Avatar
+            alt="username"
+            src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_640.png"
+          />
+          <div>
+            <span>Kaido</span>
+            <span className="opacity-70">@kaido123</span>
+          </div>
+          <MoreHorizIcon />
         </div>
       </div>
     </div>
