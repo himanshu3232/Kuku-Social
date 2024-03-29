@@ -48,13 +48,13 @@ export default function Navigation() {
         </div>
         <div className="py-10">
           <Button
+            variant="contained"
             sx={{
               width: "100%",
               borderRadius: "29px",
               py: "15px",
               bgColor: "#1e88e5",
             }}
-            variant="contained"
           >
             Post
           </Button>

@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import Navigation from "../nav/Navigation";
 import Feed from "../feed/Feed";
+import Trending from "../trending/Trending";
 export default function Homepage() {
   return (
     <Grid container xs={12} className="px-5 lg:px-36 justify-between">
@@ -14,7 +15,7 @@ export default function Homepage() {
       </Grid>
 
       <Grid xs={0} lg={3} className="hidden lg:block w-full relative">
-        <p>Text</p>
+        <Trending/>
       </Grid>
     </Grid>
   );

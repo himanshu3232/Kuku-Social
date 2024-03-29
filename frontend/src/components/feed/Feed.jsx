@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import ImageIcon from "@mui/icons-material/Image";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import TagFacesIcon from "@mui/icons-material/TagFaces";
+import PostCard from "../homepage/PostCard";
 
 const validationSchema = Yup.object().shape({
   content: Yup.string().required("Post text is required"),
@@ -43,7 +44,7 @@ export default function Feed() {
       <section className={"pb-10"}>
         <div className="flex space-x-5">
           <Avatar
-            alt="username"
+            alt="user"
             src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_640.png"
           />
           <div className="w-full">
@@ -96,6 +97,9 @@ export default function Feed() {
             </form>
           </div>
         </div>
+      </section>
+      <section>
+        {[1,1,1,1].map(() => <PostCard />)}
       </section>
     </div>
   );
