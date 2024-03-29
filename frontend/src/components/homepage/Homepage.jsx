@@ -10,12 +10,16 @@ export default function Homepage() {
         <Navigation />
       </Grid>
 
-      <Grid xs={12} lg={6} className="hidden lg:block w-full relative">
+      <Grid
+        xs={12}
+        lg={6}
+        className="px-5 lg:px-9 hidden lg:block w-full relative"
+      >
         <Feed />
       </Grid>
 
       <Grid xs={0} lg={3} className="hidden lg:block w-full relative">
-        <Trending/>
+        <Trending />
       </Grid>
     </Grid>
   );

@@ -2,13 +2,14 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import BrightnessIcon from "@mui/icons-material/Brightness4";
 import { Button } from "@mui/material";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 export default function Trending() {
   const handleChangeTheme = () => {
     console.log("theme changed");
   };
   return (
-    <div className="py-5 sticky top">
+    <div className="py-5 sticky h-screen top-0">
       <div className="relative flex items-center">
         <input
           type="text"
@@ -34,8 +35,33 @@ export default function Trending() {
       </section>
       <section className="mt-7 space-y-5">
         <h1 className="font-bold text-xl py-1">What's happening</h1>
-        <div>
-          <p className="text-sm">Election 2024</p>
+        <div className="flex justify-between w-full">
+          <div>
+            <p className="text-sm">Election 2024</p>
+            <div className="py-1">
+              <p className="font-bold">#SupremeCourt</p>
+              <p>1.1k Posts</p>
+            </div>
+            <div className="py-1">
+              <p className="font-bold">#SouthIndia</p>
+              <p>2.4k Posts</p>
+            </div>
+          </div>
+          <MoreHorizIcon />
+        </div>
+        <div className="flex justify-between w-full">
+          <div>
+            <p>Entertainment . Trending</p>
+            <div className="py-1">
+              <p className="font-bold">#ipl2024</p>
+              <p>15.1k Posts</p>
+            </div>
+            <div className="py-1">
+              <p className="font-bold">#cskvgt</p>
+            </div>
+            <p>34.3k Posts</p>
+          </div>
+          <MoreHorizIcon />
         </div>
       </section>
     </div>
