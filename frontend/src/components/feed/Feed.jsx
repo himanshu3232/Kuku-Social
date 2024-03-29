@@ -37,10 +37,7 @@ export default function Feed() {
   });
 
   return (
-    <div className="space-y-5">
-      <section>
-        <h1 className="py-5 text-xl font-bold opacity-90">Home</h1>
-      </section>
+    <div className="py-5 space-y-5">
       <section className={"pb-10"}>
         <div className="flex space-x-5">
           <Avatar

@@ -8,10 +8,15 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import CommentModal from "../commentSection/CommentModal";
 
 export default function PostCard() {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null); //For drop-down menu
+  const [openCommentModal, setOpenCommentModal] = useState(false);
+  const handleOpenCommentModal = () => setOpenCommentModal(true);
+  const handleCloseCommentModal = () => setOpenCommentModal(false);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,9 +28,6 @@ export default function PostCard() {
     handleClose();
     console.log("delete post");
   };
-  const handleOpenReplyModel = () => {
-    console.log("open model");
-  };
   const handleRePost = () => {
     console.log("repost");
   };
@@ -33,7 +35,7 @@ export default function PostCard() {
     console.log("like");
   };
   return (
-    <div>
+    <>
       <div className="flex items-center font-semibold text-gray-700 py-2">
         <RepeatIcon />
         <p>Repost</p>
@@ -81,7 +83,10 @@ export default function PostCard() {
             </div>
           </div>
           <div className="mt-2">
-            <div onClick={() => navigate(`/post/${3}`)} className="cursor-pointer">
+            <div
+              onClick={() => navigate(`/post/${3}`)}
+              className="cursor-pointer"
+            >
               <p className="mb-2 p-0">kuku app nice content</p>
             </div>
             <img
@@ -93,7 +98,7 @@ export default function PostCard() {
             <div className=" space-x-3 flex items-center text-gray-600">
               <ChatBubbleOutlineIcon
                 className="cursor-pointer"
-                onClick={handleOpenReplyModel}
+                onClick={handleOpenCommentModal}
               />
               <p>43</p>
             </div>
@@ -123,19 +128,25 @@ export default function PostCard() {
             <div className=" space-x-3 flex items-center text-gray-600">
               <BarChartIcon
                 className="cursor-pointer"
-                onClick={handleOpenReplyModel}
+                onClick={handleOpenCommentModal}
               />
               <p>4300</p>
             </div>
             <div className=" space-x-3 flex items-center text-gray-600">
               <FileUploadIcon
                 className="cursor-pointer"
-                onClick={handleOpenReplyModel}
+                onClick={handleOpenCommentModal}
               />
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <section>
+        <CommentModal
+          handleClose={handleCloseCommentModal}
+          open={openCommentModal}
+        />
+      </section>
+    </>
   );
 }

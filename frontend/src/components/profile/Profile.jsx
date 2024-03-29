@@ -11,19 +11,19 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import PostCard from "../homepage/PostCard";
+import ProfileModal from "./ProfileModal";
 
 export default function Profile() {
   const navigate = useNavigate();
   const handleNavBack = () => navigate(-1);
+  const [openProfileModal, setOpenProfileModal] = useState(false);
+  const handleOpenProfile = () => setOpenProfileModal(true);
+  const handleClose = () => setOpenProfileModal(false);
 
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleOpenProfile = () => {
-    console.log("Open profile");
   };
 
   const handleFollow = () => {
@@ -32,7 +32,9 @@ export default function Profile() {
 
   return (
     <div>
-      <section className={"bg-white z-50 flex items-center sticky top-0 bg-opacity-95"}>
+      <section
+        className={"bg-white z-50 flex items-center sticky top-0 bg-opacity-95"}
+      >
         <KeyboardBackspaceIcon
           className="cursor-pointer"
           onClick={handleNavBack}
@@ -140,6 +142,9 @@ export default function Profile() {
             <TabPanel value="4">Item Four</TabPanel>
           </TabContext>
         </Box>
+      </section>
+      <section>
+        <ProfileModal open={openProfileModal} handleClose={handleClose} />
       </section>
     </div>
   );

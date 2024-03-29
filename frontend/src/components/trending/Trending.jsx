@@ -3,6 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import BrightnessIcon from "@mui/icons-material/Brightness4";
 import { Button } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import VerifiedModal from "../authentication/VerifiedModal";
 
 export default function Trending() {
   const handleChangeTheme = () => {
@@ -29,6 +30,7 @@ export default function Trending() {
         <Button
           variant="contained"
           sx={{ padding: "10px", paddingX: "20px", borderRadius: "25px" }}
+          
         >
           Get Verified
         </Button>
@@ -63,6 +65,9 @@ export default function Trending() {
           </div>
           <MoreHorizIcon />
         </div>
+      </section>
+      <section>
+        <VerifiedModal/>
       </section>
     </div>
   );
