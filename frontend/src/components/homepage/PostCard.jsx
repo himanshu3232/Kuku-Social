@@ -81,7 +81,7 @@ export default function PostCard() {
             </div>
           </div>
           <div className="mt-2">
-            <div className="cursor-pointer">
+            <div onClick={() => navigate(`/post/${3}`)} className="cursor-pointer">
               <p className="mb-2 p-0">kuku app nice content</p>
             </div>
             <img

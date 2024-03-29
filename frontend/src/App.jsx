@@ -6,7 +6,7 @@ export default function App() {
   return <>
   <Router>
     <Routes>
-      <Route path="/" element={true ? <Homepage/>: <Authentication/>}></Route>
+      <Route path="/*" element={true ? <Homepage/>: <Authentication/>}></Route>
     </Routes>
   </Router>
   </>

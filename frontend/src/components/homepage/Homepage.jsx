@@ -3,6 +3,10 @@ import { Grid } from "@mui/material";
 import Navigation from "../nav/Navigation";
 import Feed from "../feed/Feed";
 import Trending from "../trending/Trending";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Profile from "../profile/Profile";
+import CommentSection from "../commentSection/CommentSection";
+
 export default function Homepage() {
   return (
     <Grid container xs={12} className="px-5 lg:px-36 justify-between">
@@ -15,7 +19,11 @@ export default function Homepage() {
         lg={6}
         className="px-5 lg:px-9 hidden lg:block w-full relative"
       >
-        <Feed />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/post/:id" element={<CommentSection />} />
+        </Routes>
       </Grid>
 
       <Grid xs={0} lg={3} className="hidden lg:block w-full relative">

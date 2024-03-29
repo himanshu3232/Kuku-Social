@@ -24,6 +24,8 @@ export default function Navigation() {
       <div>
         <div className="py-5">
           <img
+            className="cursor-pointer"
+            onClick={() => navigate("/")}
             height={35}
             width={35}
             src="https://cdn.pixabay.com/photo/2023/06/01/09/20/cartoon-8033257_640.png"
