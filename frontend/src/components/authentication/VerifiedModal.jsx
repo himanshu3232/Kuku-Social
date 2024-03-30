@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const style = {
   position: "absolute",
@@ -18,16 +19,21 @@ const style = {
   outline: "none",
 };
 
-export default function VerifiedModal() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const features = [
+  "Edit post: This highly requested feature gives you a 1 hour window to make a limited number of changes to published posts. Use it to make updates, tag someone, or reorder the media you attached. Edit post currently only applies to original posts and quotes.",
+  "Longer posts: Want to post more than 280 characters? Longer posts allow subscribers to post up to 25,000 characters. You can also compose longer posts in a quote or reply. Standard functionality like posting media, creating polls, and using hashtags still apply. Everyone will be able to read longer posts, but only Premium subscribers can create them.",
+  "Longer video uploads: Share more content with your followers. Premium subscribers can upload videos up to ~3 hours long and up to 8GB file size (1080p) (on kuku.com and Kuku for iOS only). Learn more encrypted direct messages with other Premium accounts.",
+  "Create a Community: As a Premium subscriber, you can create a community on Kuku to connect with people who share similar interests. ",
+];
+
+export default function VerifiedModal({open, handleClose}) {
+  
   const [plan, setPlan] = useState("Annually");
 
   return (
     <>
       <Modal
-        open={true}
+        open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -51,24 +57,42 @@ export default function VerifiedModal() {
                   alt="verified"
                 />
               </div>
-              <div className="flex justify-between border rounded-full px-5 py-3">
+              <div className="flex justify-between border rounded-full px-5 py-3 border border-gray-500">
                 <div>
                   <span
+                    onClick={() => setPlan("Annually")}
                     className={`${
                       plan === "Annually" ? "text-black" : "text-gray-400"
                     } cursor-pointer`}
                   >
                     Annually
                   </span>
-                  <span>SAVE 12%</span>
+                  <span className="text-green-500 text-sm ml-5">SAVE 12%</span>
                 </div>
                 <p
+                  onClick={() => setPlan("Monthly")}
                   className={`${
                     plan === "Monthly" ? "text-black" : "text-gray-400"
                   } cursor-pointer`}
                 >
                   Monthly
                 </p>
+              </div>
+              <div className="space-y-3">
+                {features.map((item) => (
+                  <div className="flex items-center space-x-5">
+                    <FiberManualRecordIcon
+                      sx={{ width: "7px", height: "7px" }}
+                    />
+                    <p className="text-xs">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="cursor-pointer flex justify-center bg-gray-900 text-white rounded-full px-5 py-3">
+                <span className="line-through italic">
+                ₹100.00
+                </span>
+                <span className="px-5">₹10.00</span>
               </div>
             </div>
           </div>

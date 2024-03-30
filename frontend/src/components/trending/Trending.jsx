@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import BrightnessIcon from "@mui/icons-material/Brightness4";
 import { Button } from "@mui/material";
@@ -6,6 +6,9 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import VerifiedModal from "../authentication/VerifiedModal";
 
 export default function Trending() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const handleChangeTheme = () => {
     console.log("theme changed");
   };
@@ -28,9 +31,9 @@ export default function Trending() {
         <h1 className="text-xl font-bold">Get Verified</h1>
         <h1 className="font-bold my-2">Subscribe to unlock new features</h1>
         <Button
+          onClick={handleOpen}
           variant="contained"
           sx={{ padding: "10px", paddingX: "20px", borderRadius: "25px" }}
-          
         >
           Get Verified
         </Button>
@@ -67,7 +70,7 @@ export default function Trending() {
         </div>
       </section>
       <section>
-        <VerifiedModal/>
+        <VerifiedModal open={open} handleClose={handleClose} />
       </section>
     </div>
   );
