@@ -19,14 +19,17 @@ Kuku-Social is a full-stack social media web application developed using React.j
 
 ## Screenshots
 
-![Login Page](screenshots/login.png)
-_Login Page_
-
-![Feed Page](screenshots/feed.png)
+![Feed Page](screenshots/Screenshot 2024-05-21 074710.png)
 _Feed Page_
 
-![Profile Page](screenshots/profile.png)
+![Profile Page](screenshots/Screenshot 2024-05-21 074736.png)
 _Profile Page_
+
+![Comments](screenshots/Screenshot 2024-05-21 074755.png)
+_Comments_
+
+![Premium](screenshots/Screenshot 2024-05-21 074806.png)
+_Premium_
 
 ## Installation
 
