@@ -7,9 +7,6 @@ Kuku-Social is a full-stack social media web application developed using React.j
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -40,3 +37,14 @@ To get a local copy up and running, follow these steps:
    git clone https://github.com/himanshu3232/Kuku-Social.git
    cd Kuku-Social
    ```
+2. **Install dependencies**
+
+```sh
+npm install
+```
+
+3. **Start the development server**
+
+```sh
+npm run dev
+```
