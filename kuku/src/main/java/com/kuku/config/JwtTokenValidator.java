@@ -1,4 +1,4 @@
-package config;
+package com.kuku.config;
 
 
 import jakarta.servlet.FilterChain;

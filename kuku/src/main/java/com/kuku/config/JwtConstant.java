@@ -1,4 +1,4 @@
-package config;
+package com.kuku.config;
 
 public class JwtConstant {
     public static final String SECRET_KEY = "oakssdjasdnaknad";
