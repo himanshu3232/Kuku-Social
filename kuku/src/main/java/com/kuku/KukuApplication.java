@@ -9,7 +9,6 @@ import java.util.Arrays;
 public class KukuApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(KukuApplication.class, args);
-
+		SpringApplication.run(KukuApplication.class, args);
 	}
 }

@@ -1,46 +1,54 @@
 package config;
 
+
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-@EnableWebSecurity // Enable Spring Security
+import java.util.Arrays;
+import java.util.Collections;
+
 @Configuration
-public class SecurityConfig {
+@EnableWebSecurity
+public class AppConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable() // Disable CSRF for API security (optional, consider if needed)
-                .cors().configurationSource(corsConfigurationSource()) // CORS configuration (optional)
-                .authorizeHttpRequests(auth -> auth
-                        .antMatchers("/api/**").authenticated() // Require authentication for /api/** endpoints
-                        .anyRequest().permitAll() // Allow all other requests
-                )
-                .exceptionHandling(exceptions -> exceptions
-                        .authenticationEntryPoint(unauthorizedHandler()) // Custom unauthorized handler (optional)
-                )
-                .securityContext(securityContext -> securityContext
-                        .securityContextRepository(securityContextRepository()) // Custom security context repository (optional)
-                )
-                // Add authentication providers (e.g., in-memory, database, JWT)
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .httpBasic(); // Enable HTTP Basic authentication
-
-        // Consider form login if needed (optional):
-        // http.formLogin();
-
+                .authorizeHttpRequests(Auth -> Auth.requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll())
+                .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
+                .csrf().disable().cors().configurationSource(corsConfigurationSource())
+                .and().httpBasic().and().formLogin();
         return http.build();
     }
-
-    // Implement custom beans for unauthorizedHandler, securityContextRepository, and authentication providers
-
+    private CorsConfigurationSource corsConfigurationSource(){
+        return new CorsConfigurationSource() {
+            @Override
+            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                CorsConfiguration cfg = new CorsConfiguration();
+                cfg.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setAllowCredentials(true);
+                cfg.setAllowedHeaders(Collections.singletonList("*"));
+                cfg.setExposedHeaders(Arrays.asList("Authorization"));
+                cfg.setMaxAge(3600L);
+                return cfg;
+            }
+        };
+    }
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        // Configure CORS settings here
-        return new UrlBasedCorsConfigurationSource(RequestMatcher.anyRequest());
+    private PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }
