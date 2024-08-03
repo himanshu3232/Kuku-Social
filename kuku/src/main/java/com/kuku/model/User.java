@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,4 +29,18 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Posts> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Like> likes = new ArrayList<>();
+
+    @Embedded
+    private Verification verification;
+
+    @JsonIgnore
+    @ManyToMany
+    private List<User> followers = new ArrayList<>();
+
+    @JsonIgnore
+    @ManyToMany
+    private List<User> followings = new ArrayList<>();
 }
