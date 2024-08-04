@@ -9,6 +9,7 @@ import com.kuku.response.AuthResponse;
 import com.kuku.service.CustomUserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -24,9 +25,13 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthController {
+    @Autowired
     private UserRepo userRepo;
+    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private JwtProvider jwtProvider;
+    @Autowired
     private CustomUserDetailsServiceImpl customUserDetails;
 
     @PostMapping("/signup")
@@ -45,7 +50,7 @@ public class AuthController {
         User createdUser = new User();
         createdUser.setEmail(email);
         createdUser.setFullName(fullName);
-        createdUser.setPassword(password);
+        createdUser.setPassword(passwordEncoder.encode(password));
         createdUser.setBirthDate(birthDate);
         createdUser.setVerification(new Verification());
 
