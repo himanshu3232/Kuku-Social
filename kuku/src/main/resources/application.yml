@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: kuku
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kuku
+    username: postgres
+    password: 5844
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

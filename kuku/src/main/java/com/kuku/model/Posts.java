@@ -24,7 +24,7 @@ public class Posts {
     private String video;
 
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
-    private List<Like> likes = new ArrayList<>();
+    private List<Likes> likes = new ArrayList<>();
 
     @OneToMany
     private List<Posts> replies = new ArrayList<>();
