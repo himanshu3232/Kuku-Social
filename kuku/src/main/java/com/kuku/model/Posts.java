@@ -3,6 +3,7 @@ package com.kuku.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class Posts {
 
     @ManyToOne
     private Posts replyFor;
+
+    private LocalDateTime createdAt;
 
     private boolean isReply;
 
