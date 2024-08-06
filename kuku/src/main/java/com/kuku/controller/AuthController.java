@@ -6,7 +6,7 @@ import com.kuku.model.User;
 import com.kuku.model.Verification;
 import com.kuku.repository.UserRepo;
 import com.kuku.response.AuthResponse;
-import com.kuku.service.CustomUserDetailsServiceImpl;
+import com.kuku.service.impl.CustomUserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

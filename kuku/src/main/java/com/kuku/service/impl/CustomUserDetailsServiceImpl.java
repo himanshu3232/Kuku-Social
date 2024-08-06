@@ -1,4 +1,4 @@
-package com.kuku.service;
+package com.kuku.service.impl;
 
 import com.kuku.model.User;
 
@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.kuku.repository.UserRepo;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
