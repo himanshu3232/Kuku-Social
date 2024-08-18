@@ -64,11 +64,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User followUser(Long userId, User user) throws UserException {
-        return null;
+        User followToUser = findUserById(userId);
+
+        if(user.getFollowings().contains(followToUser)
+                && followToUser.getFollowers().contains(user)){
+            user.getFollowings().remove(followToUser);
+            followToUser.getFollowers().remove(user);
+        }else{
+            user.getFollowings().add(followToUser);
+            followToUser.getFollowers().add(user);
+        }
+        userRepo.save(followToUser);
+        userRepo.save(user);
+        return followToUser;
     }
 
     @Override
     public List<User> searchUser(String query) {
-        return List.of();
+        return userRepo.searchUsers(query);
     }
 }
